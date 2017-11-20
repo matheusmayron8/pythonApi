@@ -131,8 +131,14 @@ def check_face():
     
     ada = joblib.load('model.pkl')
     y_pred_ada = ada.predict(df)
+    print(y_pred_ada)
 
-    return jsonify({'status': 200, 'mensagem': '1'})
+    if(y_pred_ada[0] == 1):
+        auth = True
+    else:
+        auth = False
+
+    return jsonify({'status': 200, 'auth': auth})
 
 
 if __name__ == '__main__':
