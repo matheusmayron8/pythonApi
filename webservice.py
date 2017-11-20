@@ -126,6 +126,7 @@ def check_face():
     df = pd.read_csv("./temp.csv")
     df = normalizeDF(df)
     df = df.drop(["face_id", "gender", "nose_tip_x", "nose_tip_y"],axis=1)
+    df.to_csv("temp.csv", sep=',', index=False)
     print df
     
     ada = joblib.load('model.pkl')
