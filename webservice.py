@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from sklearn.externals import joblib
 import peewee
 import pandas as pd
+import pickle
 
 #instancia do Flask
 app = Flask(__name__)
@@ -11,7 +12,7 @@ app = Flask(__name__)
 def check_face():
     dados = request.json
     base = pd.DataFrame.from_dict(dados, orient='index')
-    clf = joblib.load('./model.pkl')
+    clf = joblib.load('model.pkl')
     return jsonify({'status':200, 'mensagem':'1'})
 
 if __name__ == '__main__':
